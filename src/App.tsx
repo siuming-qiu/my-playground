@@ -1,12 +1,50 @@
-import './App.css';
+import { useRef, useState } from "react";
+import { transform } from "@babel/standalone";
+import { Editor } from "@monaco-editor/react";
+import "./App.css";
+function App() {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-const App = () => {
+  function onClick() {
+    if (!textareaRef.current) {
+      return;
+    }
+
+    const res = transform(textareaRef.current.value, {
+      presets: ["react", "typescript"],
+      filename: "guang.tsx",
+    });
+    console.log(res.code);
+  }
+
+  const code = `import { useEffect, useState } from "react";
+
+  function App() {
+    const [num, setNum] = useState(() => {
+      const num1 = 1 + 2;
+      const num2 = 2 + 3;
+      return num1 + num2
+    });
+  
+    return (
+      <div onClick={() => setNum((prevNum) => prevNum + 1)}>{num}</div>
+    );
+  }
+  
+  export default App;
+  `;
   return (
-    <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
+    <div className='container'>
+      <div className='item'>
+        <Editor
+          height='500px'
+          defaultLanguage='javascript'
+          defaultValue={code}
+        />
+      </div>
+      <div className='item'>111</div>
     </div>
   );
-};
+}
 
 export default App;
