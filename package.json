@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -19,7 +21,9 @@
     "@types/babel__standalone": "^7.1.7",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "gh-pages": "^6.1.1",
     "raw-loader": "^4.0.2",
     "typescript": "^5.4.2"
-  }
+  },
+  "homepage": "https:/siuming-qiu.github.io/my-playground"
 }
