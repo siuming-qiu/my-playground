@@ -19,6 +19,7 @@
     "@types/babel__standalone": "^7.1.7",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "raw-loader": "^4.0.2",
     "typescript": "^5.4.2"
   }
 }
